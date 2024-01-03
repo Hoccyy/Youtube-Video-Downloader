@@ -37,6 +37,9 @@ if operationType in ['S', 's']:
 if operationType in ['P', 'p']:
     videosDownloaded = 0
     directoryChoice = input('Enter directory for videos(recommended) : ')
+    
+    if directoryChoice in ['', ' ', None]:
+        directoryChoice = 'SavedVideos'
 
     for videoURL in playListUrlFetch(input('Enter playlist URL : ')):
         videosDownloaded +=(
