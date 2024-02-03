@@ -25,24 +25,24 @@ def playListUrlFetch(playlistUrl: str):
     return playlist.video_urls
 
 
-#
-operationType = input('One video(S) or playlist(P) : ')
+# Choose to download one video or a playlist
+operationType : str = input('One video(S) or playlist(P) : ')
 
-if operationType in ['S', 's']:
+if operationType.strip() in ['S', 's']:
     downloadVideo(
         input('Enter Video URL : '), 
         input('Enter download path/blank for current dir : ')
     )
 
-if operationType in ['P', 'p']:
-    videosDownloaded = 0
+if operationType.strip() in ['P', 'p']:
+    videosDownloaded : int = 0
     directoryChoice = input('Enter directory for videos(recommended) : ')
     
     if directoryChoice in ['', ' ', None]:
-        directoryChoice = 'SavedVideos'
+        directoryChoice : str = 'SavedVideos'
 
     for videoURL in playListUrlFetch(input('Enter playlist URL : ')):
-        videosDownloaded +=(
+        videosDownloaded += (
             downloadVideo(
                 videoURL, 
                 directoryChoice
