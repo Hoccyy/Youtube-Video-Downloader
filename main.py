@@ -29,10 +29,11 @@ def playListUrlFetch(playlistUrl: str):
 operationType : str = input('One video(S) or playlist(P) : ')
 
 if operationType.strip() in ['S', 's']:
-    downloadVideo(
+    if downloadVideo(
         input('Enter Video URL : '), 
         input('Enter download path/blank for current dir : ')
-    )
+    ) == 1: print('\nVideo download successful!')
+    else: print('Failed to download, try again')
 
 if operationType.strip() in ['P', 'p']:
     videosDownloaded : int = 0
